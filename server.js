@@ -59,10 +59,10 @@ db.serialize(() => {
 
 // Rotas da API
 app.post('/api/products', validateProduct, (req, res) => {
-    const { name, price, quantity } = req.body;
+    const { name, price, quantity, category } = req.body;
     
     db.run("INSERT INTO products (name, price, quantity) VALUES (?, ?, ?)", 
-        [name.trim(), price, quantity], 
+        [name.trim(), price, quantity, category.trim()], 
         function(err) {
             if (err) {
                 console.error('Erro ao inserir produto:', err);
@@ -74,6 +74,7 @@ app.post('/api/products', validateProduct, (req, res) => {
                 name,
                 price,
                 quantity,
+                category,
                 message: 'Produto criado com sucesso'
             });
         }
@@ -154,11 +155,4 @@ app.use(errorHandler);
 // Iniciar o servidor
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
-});
-db.run("ALTER TABLE products ADD COLUMN category TEXT", (err) => {
-    if (err) {
-        console.error('Erro ao adicionar coluna:', err.message);
-    } else {
-        console.log('Coluna "category" adicionada com sucesso');
-    }
 });
