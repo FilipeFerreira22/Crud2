@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Função para validar dados do formulário
-    function validateFormData(name, price, quantity) {
+    function validateFormData(name, price, quantity, category) {
         if (!name || name.trim().length === 0) {
             throw new Error('Nome do produto é obrigatório');
         }
@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (!quantity || isNaN(quantity) || quantity < 0) {
             throw new Error('Quantidade inválida');
+        }
+        if (!category || category.trim().length === 0) {
+            throw new Error('Categoria é obrigatória');
         }
     }
 
@@ -60,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${product.name}</td>
                     <td>R$ ${product.price.toFixed(2)}</td>
                     <td>${product.quantity}</td>
-                    <td>
+                    <td>${product.category}</td>
                         <button onclick="deleteProduct(${product.id})" class="delete-btn">
                             <i class="fas fa-trash-alt"></i> Excluir
                         </button>
@@ -82,16 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = document.getElementById('name').value;
             const price = parseFloat(document.getElementById('price').value);
             const quantity = parseInt(document.getElementById('quantity').value);
+            const category = document.getElementById('category').value;
 
             // Validar dados antes de enviar
-            validateFormData(name, price, quantity);
+            validateFormData(name, price, quantity, category);
 
             const response = await fetch('/api/products', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, price, quantity })
+                body: JSON.stringify({ name, price, quantity, category })
             });
 
             const result = await response.json();

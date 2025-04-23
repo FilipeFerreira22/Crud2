@@ -13,7 +13,7 @@
             <h1><i class="fas fa-box-open"></i> Cadastro de Produtos</h1>
             <p class="subtitle">Gerencie seu inventário de forma simples e eficiente</p>
         </header>
-        
+
         <section class="form-section">
             <h2><i class="fas fa-plus-circle"></i> Novo Produto</h2>
             <form id="productForm">
@@ -33,8 +33,13 @@
                         <input type="number" id="quantity" placeholder="0" required>
                     </div>
                 </div>
-                
-                <button type="submit"><i class="fas fa-save"></i> Cadastrar Produto</button>
+                <div class="form-group">
+                    <label for="category"><i class="fas fa-tag"></i> Categoria:</label>
+                    <input type="text" id="category" placeholder="Digite a categoria do produto" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit"><i class="fas fa-save"></i> Cadastrar Produto</button>
+                </div>
             </form>
         </section>
 
@@ -65,4 +70,4 @@
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>

@@ -154,4 +154,11 @@ app.use(errorHandler);
 // Iniciar o servidor
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
-}); 
+});
+db.run("ALTER TABLE products ADD COLUMN category TEXT", (err) => {
+    if (err) {
+        console.error('Erro ao adicionar coluna:', err.message);
+    } else {
+        console.log('Coluna "category" adicionada com sucesso');
+    }
+});

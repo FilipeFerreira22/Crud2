@@ -36,6 +36,12 @@ npm start
 http://localhost:3000
 ```
 
+## Site Hospedado
+
+O sistema está hospedado e pode ser acessado pelo seguinte link:
+
+[Site do Sistema de Cadastro de Produtos](#) <!-- Substitua # pelo link gerado pelo Render -->
+
 ## Estrutura do Projeto
 
 - `server.js` - Servidor Express e configuração do banco de dados
@@ -52,4 +58,4 @@ http://localhost:3000
 - SQLite3
 - JavaScript (ES6+)
 - HTML5
-- CSS3 
+- CSS3
